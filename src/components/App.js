@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import MediaQuery from 'react-responsive';
+import WebPushNotification from './WebPushNotification';
+import DownloadApp from './DownloadApp';
+import Newsletter from './Newsletter';
 import Tabs from './Tabs';
-import Header from './Header';
 import axios from 'axios';
 
 class App extends Component {
@@ -9,19 +12,26 @@ class App extends Component {
     photos: null,
     loading: false,
     error: null,
+    canSendNotifications: false
   };
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+
+    const canSendNotifications = window.Notification && Notification.permission === "granted";
 
     this.state = {
       photos: null,
       loading: false,
       error: null,
+      canSendNotifications: canSendNotifications,
     };
+
+    this.checkPushNotification = this.checkPushNotification.bind(this);
   }
 
   componentDidMount() {
+    // Fetch photos from the API
     const self = this;
     this.setState({ loading: true, error: null, items: null }, () => {
       axios.get('https://jsonplaceholder.typicode.com/photos')
@@ -38,21 +48,69 @@ class App extends Component {
     });
   }
 
+  checkPushNotification(e) {
+    e.preventDefault();
+
+    if (window.Notification && (Notification.permission !== "denied" || Notification.permission === "default")) {
+      const self = this;
+      Notification.requestPermission(function (status) {
+        if (status === "granted") {
+          self.setState({ canSendNotifications: true });
+        } else {
+          // Notifications have been blocked
+        }
+      });
+    }
+
+  }
+
   render() {
-    const { photos, loading, error } = this.state;
+    const { photos, canSendNotifications, loading, error } = this.state;
     return (
       <div id="wrapper">
 
-        <Header />
+        <div className="row">
+          <div className="column" style={{ 'display': 'table' }}>
+            <div style={{ 'display': 'table-cell', 'verticalAlign': 'middle' }}>
+              <h1>Black Friday</h1>
+              <p>Don't miss out on Black Friday deals, just in time for Christmas shopping! Up to 70% on all you favorite men's, women's, and kids brands like Alberta Ferretti, Casadei, Marni, Dsquared2, Versace, and Maison Margiela. Join on this fun Amerian tradition and keep an eye out for the best offers on clothing, bags, accessories, and shoes the day after Thanksgiving. Subscribe to our newsletter and to our web push notifications to receive updates on sales and special deals.</p>
+            </div>
+          </div>
 
-        {error != null &&
-          <div className="alert alert-danger">
+          <MediaQuery query="(min-device-width: 1224px)">
+            <div className="column-two">
+              <div className="box-container">
+                <Newsletter />
+              </div>
+            </div>
+            <div className="column-two">
+              <div className="box-container">
+                { !canSendNotifications && 
+                  <WebPushNotification checkPushNotification={this.checkPushNotification} />
+                }
+
+                { canSendNotifications && 
+                  <DownloadApp />
+                }
+              </div>
+            </div>
+          </MediaQuery>
+          <MediaQuery query="(max-device-width: 1224px)">
+            <div className="column-two">
+              <Tabs />
+            </div>
+          </MediaQuery>
+
+        </div>
+
+        {error !== null &&
+          <div>
             <h3>Error calling the API</h3>
             <p>The API from packagist.org did not answered correctly. Please report this error.</p>
           </div>
         }
 
-        { loading != false &&
+        { loading !== false &&
           <h3 className="text-center">
             Loading...
           </h3>

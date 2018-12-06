@@ -3,7 +3,7 @@ import icoNotification from '../images/ico-notification.svg';
 import icoMail from '../images/ico-mail.svg';
 import Newsletter from './Newsletter';
 import WebPushNotification from './WebPushNotification';
-import tabsCss from '../styles/tabs.css';
+import '../styles/tabs.css';
 
 class Tabs extends Component {
 

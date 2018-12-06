@@ -22,7 +22,7 @@ const Newsletter = () => (
     </div>
 
     <div className="box-button-container">
-      <button type="submit" name="newsletter-submit">Subscribe</button>
+      <button type="button" name="newsletter-submit">Subscribe</button>
     </div>
   </form>
 );

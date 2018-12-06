@@ -47,7 +47,7 @@ input[type=text], input[type=email] {
     padding-bottom: 1%;
 }
 
-button[type=submit] {
+button[type=submit], button[type=button] {
   background-color: #313131;
   color: #ccc;
   text-align: center;
@@ -97,7 +97,7 @@ button[type=submit] {
   padding: 0 4% 2% 4%;
 }
 
-.box-container img { width: 23% }
+.box-container img { width: 20% }
 
 .box-privacy-text {
   color: #ccc;
