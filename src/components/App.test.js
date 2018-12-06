@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, configure } from 'enzyme';
+import { mount } from 'enzyme';
 import App from './App';
 
 it('render without crash', () => {

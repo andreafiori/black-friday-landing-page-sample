@@ -58,10 +58,10 @@ class App extends Component {
       Notification.requestPermission(function (status) {
         if (status === "granted") {
           self.setState({ canSendNotifications: true });
-        } else {
-          // Notifications have been blocked
         }
       });
+    } else {
+      alert('Notifications blocked or not allowed! Please try again later.');
     }
 
   }
