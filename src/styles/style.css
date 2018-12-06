@@ -181,12 +181,21 @@ and (min-device-width : 320px)
 and (max-device-width : 480px) {
 
   .row {
-    min-height: 600px;
-    max-height: 600px;
+    min-height: 700px;
+    max-height: 700px;
+    margin-bottom: 15%;
   }
 
   .column, .column-two {
     width: 100%;
+  }
+
+  .photos {
+    float: none;
+    width: 100%;
+    min-width: 100%;
+    margin: 0 0 4% 0;
+    padding: 0;
   }
 
   .photos-container {
@@ -197,6 +206,23 @@ and (max-device-width : 480px) {
   .box-container {
     min-height: 330px;
     max-height: 330px;
+  }
+
+  .box-content {
+    margin-bottom: 20%;
+  }
+  
+  .column-checkbox {
+    min-height: 150px;
+    margin-right: 3%;
+  }
+
+  .box-privacy-check {
+    margin-top: 3%;
+  }
+
+  .input-search {
+    margin-bottom: 4%;
   }
 }
 

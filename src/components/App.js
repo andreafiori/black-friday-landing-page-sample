@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import MediaQuery from 'react-responsive';
 import WebPushNotification from './WebPushNotification';
 import DownloadApp from './DownloadApp';
 import Newsletter from './Newsletter';
-import Tabs from './Tabs';
-import axios from 'axios';
+import icoNotification from '../images/ico-notification.svg';
+import icoMail from '../images/ico-mail.svg';
+import '../styles/tabs.css';
 
 class App extends Component {
 
@@ -51,7 +53,7 @@ class App extends Component {
   checkPushNotification(e) {
     e.preventDefault();
 
-    if (window.Notification && (Notification.permission !== "denied" || Notification.permission === "default")) {
+    if (window.Notification && (Notification.permission !== 'denied' || Notification.permission === 'default')) {
       const self = this;
       Notification.requestPermission(function (status) {
         if (status === "granted") {
@@ -67,41 +69,7 @@ class App extends Component {
   render() {
     const { photos, canSendNotifications, loading, error } = this.state;
     return (
-      <div id="wrapper">
-
-        <div className="row">
-          <div className="column" style={{ 'display': 'table' }}>
-            <div style={{ 'display': 'table-cell', 'verticalAlign': 'middle' }}>
-              <h1>Black Friday</h1>
-              <p>Don't miss out on Black Friday deals, just in time for Christmas shopping! Up to 70% on all you favorite men's, women's, and kids brands like Alberta Ferretti, Casadei, Marni, Dsquared2, Versace, and Maison Margiela. Join on this fun Amerian tradition and keep an eye out for the best offers on clothing, bags, accessories, and shoes the day after Thanksgiving. Subscribe to our newsletter and to our web push notifications to receive updates on sales and special deals.</p>
-            </div>
-          </div>
-
-          <MediaQuery query="(min-device-width: 1224px)">
-            <div className="column-two">
-              <div className="box-container">
-                <Newsletter />
-              </div>
-            </div>
-            <div className="column-two">
-              <div className="box-container">
-                { !canSendNotifications && 
-                  <WebPushNotification checkPushNotification={this.checkPushNotification} />
-                }
-
-                { canSendNotifications && 
-                  <DownloadApp />
-                }
-              </div>
-            </div>
-          </MediaQuery>
-          <MediaQuery query="(max-device-width: 1224px)">
-            <div className="column-two">
-              <Tabs />
-            </div>
-          </MediaQuery>
-
-        </div>
+      <div>
 
         {error !== null &&
           <div>
@@ -110,14 +78,74 @@ class App extends Component {
           </div>
         }
 
-        { loading !== false &&
+        {loading !== false &&
           <h3 className="text-center">
             Loading...
           </h3>
         }
 
-        { photos !== null &&
+        {photos !== null &&
           <div>
+
+            <div className="row">
+              <div className="column" style={{ 'display': 'table' }}>
+                <div style={{ 'display': 'table-cell', 'verticalAlign': 'middle' }}>
+                  <h1>Black Friday</h1>
+                  <p>Don't miss out on Black Friday deals, just in time for Christmas shopping! Up to 70% on all you favorite men's, women's, and kids brands like Alberta Ferretti, Casadei, Marni, Dsquared2, Versace, and Maison Margiela. Join on this fun Amerian tradition and keep an eye out for the best offers on clothing, bags, accessories, and shoes the day after Thanksgiving. Subscribe to our newsletter and to our web push notifications to receive updates on sales and special deals.</p>
+                </div>
+              </div>
+
+              <MediaQuery query="(min-device-width: 1224px)">
+                <div className="column-two">
+                  <div className="box-container">
+                    <Newsletter />
+                  </div>
+                </div>
+                <div className="column-two">
+                  <div className="box-container">
+                    {!canSendNotifications &&
+                      <WebPushNotification checkPushNotification={this.checkPushNotification} />
+                    }
+
+                    {canSendNotifications &&
+                      <DownloadApp />
+                    }
+                  </div>
+                </div>
+              </MediaQuery>
+              <MediaQuery query="(max-device-width: 1224px)">
+                <div className="column-two">
+
+                  <div className="tabs">
+                    <div className="tab">
+                      <input type="radio" id="tab-one" name="tab-group" defaultChecked />
+                      <label htmlFor="tab-one">
+                        <img src={icoMail} alt="Icon Mail" />
+                      </label>
+                      <div className="content">
+                        <Newsletter />
+                      </div>
+                    </div>
+                    <div className="tab">
+                      <input type="radio" id="tab-two" name="tab-group" />
+                      <label htmlFor="tab-two">
+                        <img src={icoNotification} alt="Icon Notification" />
+                      </label>
+                      <div className="content">
+                        {!canSendNotifications &&
+                          <WebPushNotification />
+                        }
+                        {canSendNotifications &&
+                          <DownloadApp />
+                        }
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </MediaQuery>
+
+            </div>
 
             <div className="photos-form-container">
               <h3 className="text-center">Shop Women</h3>
