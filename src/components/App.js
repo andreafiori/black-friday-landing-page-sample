@@ -75,7 +75,7 @@ class App extends Component {
     this.setState({ filteredPhotos: null }, () => {
 
       let filtered = this.state.photos.filter((item) => {
-        return item.title.toLowerCase().includes(searched.toLowerCase());
+        return item.title.toLowerCase().indexOf(searched.toLowerCase()) !== -1;
       });
 
       this.setState({ filteredPhotos: (filtered === '') ? this.state.photos : filtered });
