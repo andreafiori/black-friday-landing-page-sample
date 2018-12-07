@@ -23,6 +23,7 @@ class App extends Component {
     const canSendNotifications = window.Notification && Notification.permission === "granted";
 
     this.state = {
+      filteredPhotos: null,
       photos: null,
       loading: false,
       error: null,
@@ -41,11 +42,12 @@ class App extends Component {
           self.setState({
             loading: false,
             error: null,
+            filteredPhotos: response.data,
             photos: response.data,
           });
         })
         .catch(function (error) {
-          self.setState({ loading: false, photos: null, error: error });
+          self.setState({ loading: false, filteredPhotos: null, photos: null, error: error });
         });
     });
   }
@@ -66,8 +68,22 @@ class App extends Component {
 
   }
 
+  searchPhotos(event) {
+    event.preventDefault();
+
+    const searched = event.target.value;
+    this.setState({ filteredPhotos: null }, () => {
+
+      let filtered = this.state.photos.filter((item) => {
+        return item.title.toLowerCase().includes(searched.toLowerCase());
+      });
+
+      this.setState({ filteredPhotos: (filtered === '') ? this.state.photos : filtered });
+    });
+  }
+
   render() {
-    const { photos, canSendNotifications, loading, error } = this.state;
+    const { filteredPhotos, canSendNotifications, loading, error } = this.state;
     return (
       <div>
 
@@ -78,13 +94,13 @@ class App extends Component {
           </div>
         }
 
-        {loading !== false &&
+        { loading !== false &&
           <h3 className="text-center">
             Loading...
           </h3>
         }
 
-        {photos !== null &&
+        {loading === false &&
           <div>
 
             <div className="row">
@@ -149,21 +165,26 @@ class App extends Component {
 
             <div className="photos-form-container">
               <h3 className="text-center">Shop Women</h3>
-              <input type="text" placeholder="Testo da ricercare" className="input-search" name="search" />
+              <input type="text" onChange={this.searchPhotos.bind(this)} placeholder="Testo da ricercare" className="input-search" name="search" />
             </div>
 
-            <div className="photos-container">
-              {photos.map((item, i) =>
-                <div key={i} className="photos" style={{ background: `url(${item.url}) no-repeat center` }}>
-                  <span className="photos-text">{item.title}</span>
-                </div>
-              )}
-            </div>
+            { filteredPhotos !== null && 
+              <div className="photos-container">
+                {filteredPhotos.map((item, i) =>
+                  <div key={i} className="photos" style={{ background: `url(${item.url}) no-repeat center` }}>
+                    <span className="photos-text">{item.title}</span>
+                  </div>
+                )}
+              </div>
+            }
+
+            { filteredPhotos === null || filteredPhotos.length === 0 && 
+              <h3 className="text-center">No photos were found</h3>
+            }
 
           </div>
         }
       </div>
-
     );
   }
 }

@@ -110,7 +110,7 @@ button[type=submit], button[type=button] {
 }
 
 .photos-container {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -125,6 +125,7 @@ button[type=submit], button[type=button] {
   margin-right: 1%;
   margin-bottom: 1%;
   text-align: center;
+  padding: 1%;
 }
 
 .photos-text {
