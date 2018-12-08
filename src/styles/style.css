@@ -228,8 +228,8 @@ and (max-device-width : 480px) {
 
   .box-content {
     margin-bottom: 20%;
-    min-height: 217px;
-    max-height: 217px;
+    min-height: 228px;
+    max-height: 228px;
   }
   
   .column-checkbox {
