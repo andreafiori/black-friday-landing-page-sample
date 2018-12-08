@@ -4,7 +4,7 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import { HashRouter } from 'react-router-dom';
 import './styles/style.css';
-/* IE Polyfills */
+/* Polyfills */
 import 'core-js/es6/map';
 import 'core-js/es6/set';
 import 'raf/polyfill';

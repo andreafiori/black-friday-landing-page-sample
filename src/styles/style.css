@@ -52,22 +52,15 @@ button[type=submit], button[type=button] {
   color: #ccc;
   text-align: center;
   width: 100%;
-  font-size: 120%;
+  font-size: 100%;
   min-height: 40px;
   border: 0;
-  padding: 2% 0 2% 0;
+  padding: 5% 0 5% 0;
   cursor: pointer;
   text-transform: uppercase;
 }
 
 .text-center { text-align: center }
-
-.black-friday-container {
-  display: table;
-  background-color: #000;
-  color: #fff;
-  min-height: 300px;
-}
 
 .box-label-email { color: #aaa; }
 
@@ -80,10 +73,10 @@ button[type=submit], button[type=button] {
 .box-container {
   background-color: #fff;
   color: #000;
-  padding: 4%;
-  margin-bottom: 1%;
-  min-height: 300px;
-  max-height: 300px;
+  padding: 8%;
+  margin: 0 0 1% 1%;
+  min-height: 400px;
+  max-height: 400px;
   position: relative;
 }
 
@@ -94,10 +87,16 @@ button[type=submit], button[type=button] {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 0 4% 2% 4%;
+  padding: 0 7% 3% 7%;
 }
 
+.button-container { margin-bottom: 4% }
+
 .box-container img { width: 20% }
+
+.box-newsletter-email {
+  margin: 3% 0 3% 0;
+}
 
 .box-privacy-text {
   color: #ccc;
@@ -143,7 +142,7 @@ button[type=submit], button[type=button] {
 /* Create three equal columns that floats next to each other */
 .column {
     float: left;
-    width: 33.33%;
+    width: 40%;
     padding: 10px;
 }
 
@@ -157,23 +156,35 @@ button[type=submit], button[type=button] {
 
 .column-two {
     float: left;
-    width: 33.33%;
+    width: 30%;
     padding: 10px;
 }
 
 /* Clear floats after the columns */
-.row:after {
+.black-friday-row:after {
     content: "";
     display: table;
     clear: both;
 }
 
-.row {
+.black-friday-row {
   background-color: #000;
   color: #fff;
-  padding: 3%;
+  padding: 5%;
 }
 
+.black-friday-column {
+  padding-top: 6%;
+}
+
+.alert-warning {
+  background-color: lightyellow;
+  padding: 4% 0 4% 0;
+  margin: 0 auto;
+  color: darkgoldenrod;
+  width: 90%;
+  margin-top: 4%;
+}
 
 
 /* Smartphones (portrait and landscape) ----------- */
@@ -181,10 +192,15 @@ button[type=submit], button[type=button] {
 and (min-device-width : 320px) 
 and (max-device-width : 480px) {
 
-  .row {
-    min-height: 700px;
-    max-height: 700px;
+  .black-friday-row {
+    height: 100%;
+    min-height: 740px;
+    max-height: 740px;
     margin-bottom: 15%;
+  }
+
+  .black-friday-column {
+    padding-top: 0;
   }
 
   .column, .column-two {
@@ -202,6 +218,7 @@ and (max-device-width : 480px) {
   .photos-container {
     width: 90%;
     margin: 0 auto;
+    margin-top: 6%;
   }
 
   .box-container {
@@ -211,6 +228,8 @@ and (max-device-width : 480px) {
 
   .box-content {
     margin-bottom: 20%;
+    min-height: 217px;
+    max-height: 217px;
   }
   
   .column-checkbox {
@@ -222,61 +241,7 @@ and (max-device-width : 480px) {
     margin-top: 3%;
   }
 
-  .input-search {
-    margin-bottom: 4%;
+  .photos-form-container {
+    width: 90%;
   }
-}
-
-/* Smartphones (landscape) ----------- */
-@media only screen 
-and (min-width : 321px) {
-  /* Styles */
-}
-
-/* Smartphones (portrait) ----------- */
-@media only screen 
-and (max-width : 320px) {
-  /* Styles */
-}
-
-/* iPads (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) {
-  /* Styles */
-}
-
-/* iPads (landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : landscape) {
-  /* Styles */
-}
-
-/* iPads (portrait) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : portrait) {
-  /* Styles */
-}
-
-/* Desktops and laptops ----------- */
-@media only screen 
-and (min-width : 1224px) {
-/* Styles */
-}
-
-/* Large screens ----------- */
-@media only screen 
-and (min-width : 1824px) {
-  /* Styles */
-}
-
-/* iPhone 4 ----------- */
-@media
-only screen and (-webkit-min-device-pixel-ratio : 1.5),
-only screen and (min-device-pixel-ratio : 1.5) {
-  /* Styles */
 }

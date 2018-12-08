@@ -103,12 +103,10 @@ class App extends Component {
         {loading === false &&
           <div>
 
-            <div className="row">
-              <div className="column" style={{ 'display': 'table' }}>
-                <div style={{ 'display': 'table-cell', 'verticalAlign': 'middle' }}>
-                  <h1>Black Friday</h1>
-                  <p>Don't miss out on Black Friday deals, just in time for Christmas shopping! Up to 70% on all you favorite men's, women's, and kids brands like Alberta Ferretti, Casadei, Marni, Dsquared2, Versace, and Maison Margiela. Join on this fun Amerian tradition and keep an eye out for the best offers on clothing, bags, accessories, and shoes the day after Thanksgiving. Subscribe to our newsletter and to our web push notifications to receive updates on sales and special deals.</p>
-                </div>
+            <div className="black-friday-row">
+              <div className="column black-friday-column">
+                <h1>Black Friday</h1>
+                <p>Don't miss out on Black Friday deals, just in time for Christmas shopping! Up to 70% on all you favorite men's, women's, and kids brands like Alberta Ferretti, Casadei, Marni, Dsquared2, Versace, and Maison Margiela. Join on this fun Amerian tradition and keep an eye out for the best offers on clothing, bags, accessories, and shoes the day after Thanksgiving. Subscribe to our newsletter and to our web push notifications to receive updates on sales and special deals.</p>
               </div>
 
               <MediaQuery query="(min-device-width: 1224px)">
@@ -178,8 +176,10 @@ class App extends Component {
               </div>
             }
 
-            { filteredPhotos === null || filteredPhotos.length === 0 && 
-              <h3 className="text-center">No photos were found</h3>
+            { (filteredPhotos === null || filteredPhotos.length === 0) && 
+              <div className="alert-warning">
+                <h3 className="text-center">No photos were found</h3>
+              </div>
             }
 
           </div>

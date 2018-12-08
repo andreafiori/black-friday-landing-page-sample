@@ -17,7 +17,7 @@ class WebPushNotification extends Component {
         </div>
 
         <div className="box-button-container">
-          <button type="button" name="notifications-accept" onClick={this.props.checkPushNotification}>Keep me updated</button>
+          <button type="button" className="button-container" name="notifications-accept" onClick={this.props.checkPushNotification}>Keep me updated</button>
         </div>
       </form>
     );

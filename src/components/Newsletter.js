@@ -7,14 +7,16 @@ const Newsletter = () => (
     <div className="box-content">
       <p><strong>Receive updates on sales and offers directly to your in-box.</strong></p>
 
-      <label className="box-label-email" htmlFor="email-newsletter">E-mail</label>
-      <div>
-        <input id="email-newsletter" name="email" placeholder="luca.rossi@gmail.com" type="email" required="required" />
+      <div className="box-newsletter-email">
+        <label className="box-label-email" htmlFor="email-newsletter">E-mail</label>
+        <div>
+          <input id="email-newsletter" name="email" placeholder="luca.rossi@gmail.com" type="email" required="required" />
+        </div>
       </div>
 
       <div className="box-privacy-check">
         <div className="column-checkbox">
-          <input type="checkbox" className="regular-checkbox" name="privacy" value="ok" />
+          <input type="checkbox" required="required" className="regular-checkbox" name="privacy" value="ok" />
         </div>
 
         <div className="box-privacy-text">
@@ -24,7 +26,7 @@ const Newsletter = () => (
     </div>
 
     <div className="box-button-container">
-      <button type="button" name="newsletter-submit">Subscribe</button>
+      <button type="button" className="button-container" name="newsletter-submit">Subscribe</button>
     </div>
   </form>
 );
