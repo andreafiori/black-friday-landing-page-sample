@@ -1,4 +1,4 @@
-# Landing Example 02
+# Black Friday Landing Page Example
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
@@ -21,17 +21,17 @@ We can filter the box with the __Input Search__.
 
 Install dependencies:
 
-	npm install
+    npm install
 
 ## Run the project
 
 Run the project on http://localhost:3000
 
-	npm start
+    npm start
 
 ## Run the tests
 
-	npm test
+    npm test
 
 OR
 
@@ -45,7 +45,7 @@ Generate code coverage reports
 
 Builds static files to deploy on server:
 
-	npm run build
+    npm run build
 
 ## Code Linter
 
@@ -55,21 +55,21 @@ Launch ESLint from the local installation:
 
 All JS files:
 
-	node_modules\.bin\eslint src\components\*.js
+    node_modules\.bin\eslint src\components\*.js
 
 Single file:
 
-	node_modules\.bin\eslint src\components\<filename.js>
+    node_modules\.bin\eslint src\components\<filename.js>
 
 ### Linux:
 
 All JS files:
 
-	./node_modules/.bin/eslint src/components/*.js
+    ./node_modules/.bin/eslint src/components/*.js
 
 Single file:
 
-	./node_modules/.bin/eslint src/components/<filename.js>
+    ./node_modules/.bin/eslint src/components/<filename.js>
 
 ## Additional dependencies
 
